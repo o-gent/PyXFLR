@@ -1,3 +1,5 @@
+""" Uses ahk library, see https://pypi.org/project/ahk/ """
+
 from ahk import AHK
 import time
 import logging
