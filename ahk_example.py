@@ -1,7 +1,7 @@
 from ahk import AHK
 import time
 
-ahk = AHK(executable_path = r'C:\Users\olive\Documents\GitHub\pyxfl\ahk\AutoHotkeyU64.exe')
+ahk = AHK(executable_path = r'C:\Users\olive\Documents\GitHub\PyXFLR\ahk\AutoHotkeyU64.exe')
 ahk.run_script('Run, xflr/xflr5.exe')
 
 time.sleep(2)
