@@ -8,7 +8,7 @@ class WingEdit:
     def __init__(self, window_interaction : WindowInteraction):
         self.wi = window_interaction
         self.current_index = 0
-        self.section_gap = 10
+        self.section_gap = 10      
         self.interface_map = {
             'y'         : 7,
             'chord'     : 8,
