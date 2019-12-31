@@ -3,3 +3,6 @@
 
 # Auto Hot Key library
 ahk
+
+# Pandas, dataframes are very useful
+pandas
