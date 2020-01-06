@@ -1,5 +1,5 @@
 from window_interaction import WindowInteraction
-from wingplane_design import WingEdit
+from window_edit import WingEdit
 
 import logging
 logging.basicConfig(level=logging.INFO)
