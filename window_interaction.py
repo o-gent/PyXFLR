@@ -7,7 +7,7 @@ import logging
 class WindowInteraction:
     """ low level key pressing interface with xflr windows """
     def __init__(self, app_load_time : int = 2):
-        self.ahk = AHK(executable_path = r'C:\Users\olive\Documents\GitHub\PyXFLR\ahk\AutoHotkeyU64.exe')
+        self.ahk = AHK(executable_path = r'ahk\AutoHotkeyU64.exe')
         self.ahk.run_script('Run, xflr/xflr5.exe')
         time.sleep(app_load_time)
         self.win = self.ahk.find_window(title=b'xflr')
