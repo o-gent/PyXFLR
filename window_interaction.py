@@ -17,15 +17,17 @@ class WindowInteraction:
     
     def field_selector(self, index : int, window = None):
         self.list_windows()
-        print("Hello")
-        print(index)
+        logging.info(f"selecting index: {index}")
         wing_edit = self.ahk.find_window_by_title(b'Wing Edition - xflr5 v6.47')
+        if window == None:
+            window = self.win
         for _ in range(index):
             time.sleep(0.01)
-            wing_edit.send("{Tab}")
-    
+            #wing_edit.send("{Tab}")
+            self.press(r'{Tab}', wing_edit)
+     
     def get_window(self, title : str):
-        return self.ahk.find_window(title = title)
+        return self.ahk.find_window_by_title(title)
     
     def list_windows(self):
         return [window.title for window in self.ahk.windows()]
@@ -38,6 +40,7 @@ class WindowInteraction:
         if window == None:
             window = self.win
         window.activate()
+        logging.info(key)
         window.send(f"{key}")
     
     def check_window_exists(self, name : str):

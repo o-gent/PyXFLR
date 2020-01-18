@@ -6,6 +6,7 @@
 # - Save new plane, Enter * 2
 
 from window_edit import WindowInteraction
+import logging 
 
 class OverallNav:
     """ Need a better name for this """
@@ -23,5 +24,6 @@ class OverallNav:
         win.send('{Enter}')
     
     def default_start(self):
+        logging.info("Overall nav default start")
         self.__plane_design()
         self.__new_plane()

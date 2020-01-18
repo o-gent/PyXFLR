@@ -1,20 +1,10 @@
-from ahk import AHK
-import time
+from pyxflr import PyXFLR
 
-from window_interaction import WindowInteraction
-from main_interaction import OverallNav
-from window_edit import WingEdit
-
-wi = WindowInteraction()
-on = OverallNav(wi)
-we = WingEdit(wi)
-
-on.default_start()
+xflr = PyXFLR()
 
 parameters = {
-    'chord' : {'value' : 300, 'section' : 1},
-    'twist' : {'value' : 1, 'section' : 1}
-    #'chord' : {'value' : 200, 'section' : 2}
+    1: {'chord' : 300, 'twist' : 1, 'foil': 0},
+    2: {'chord' : 200, 'twist' : 0, 'foil': 0},
 }
 
-we.update_window(parameters)
+xflr.wing_edit.update_window(parameters)

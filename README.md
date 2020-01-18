@@ -1,6 +1,6 @@
 ![alt text](/assets/logo.png "PyXFLR")
 
-Python API for XFLR5 automation
+#Python API for XFLR5 automation
 
 Requires:
 
@@ -8,6 +8,15 @@ Requires:
 
 - ahk python library    https://pypi.org/project/ahk/
 
-- xfoil
 
-## Aim: collect results for any parameter ranges, wing span, chrords
+## Explanation:
+
+XFLR is  a great tool for low reynolds number analysis of UAVs but iterating through designs is a long process. PyXFLR automates the design iteration process, allowing easy analysis of infinite design possibilities and capturing the results to find the most optimal solution
+
+## Features:
+
+- [ ] Create foils
+- [ ] Analyse foils
+- [ ] Create plane configurations
+- [ ] Create analysis methods
+- [ ] Analyse plane configurations and save results to file
