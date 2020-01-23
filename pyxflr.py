@@ -1,5 +1,5 @@
 from window_interaction import WindowInteraction
-from window_edit import WingEdit, TailEdit, FinEdit
+from window_edit import WingEdit, ElevatorEdit, FinEdit
 from main_interaction import OverallNav
 
 import logging
@@ -16,7 +16,7 @@ class PyXFLR:
         # Init plane parts
         self.wing_edit = WingEdit(self.window_interaction)
         self.fin_edit = FinEdit(self.window_interaction)
-        self.tail_edit = TailEdit(self.window_interaction)
+        self.elevator_edit = ElevatorEdit(self.window_interaction)
         
         # Go to the 
         self.overall_nav.default_start()

@@ -1,6 +1,7 @@
 from ahk import AHK
 import logging
 from window_interaction import WindowInteraction
+import time 
 
 class WindowEdit:
     """ Interface to edit boxes """
@@ -13,6 +14,7 @@ class WindowEdit:
         """ __Starts the window, must done at the beginning of every new interaction with the window """
         self.wi.ctrl_press(self.parameters['key'])
         self.current_index = 0
+        time.sleep(0.1)
     
     def __end(self):
         """ Save and close the window """
@@ -101,11 +103,11 @@ class WingEdit(WindowEdit):
         super().__init__(window_interaction, parameters)
 
 
-class TailEdit(WindowEdit):
+class ElevatorEdit(WindowEdit):
     def __init__(self, window_interaction):
         parameters = {
             'name'          : b'Wing Edition - xflr5 v6.47',
-            'key'           : 'T',
+            'key'           : 'E',
             'section_gap'   : 10,
             'y'             : 7,
             'chord'         : 8,
