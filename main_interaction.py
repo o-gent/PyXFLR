@@ -10,11 +10,27 @@ import logging
 
 class OverallNav:
     """ Need a better name for this """
+
     def __init__(self, window_interaction : WindowInteraction):
         self.wi = window_interaction
     
+    """
+    Public
+    """
+
+    def default_start(self):
+        logging.info("Overall nav default start")
+        self.__plane_design()
+        self.__new_plane()
+
+
+    """
+    Private
+    """
+    
     def __plane_design(self):
         self.wi.ctrl_press('6')
+
 
     def __new_plane(self):
         self.wi.press('{F3}')
@@ -23,7 +39,3 @@ class OverallNav:
         win.send('{Enter}')
         win.send('{Enter}')
     
-    def default_start(self):
-        logging.info("Overall nav default start")
-        self.__plane_design()
-        self.__new_plane()

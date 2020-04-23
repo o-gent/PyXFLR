@@ -9,6 +9,7 @@ logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:
 
 class PyXFLR:
     """ Orchestrates XFLR """
+    
     def __init__(self):
         self.window_interaction = WindowInteraction()
         self.overall_nav = OverallNav(self.window_interaction)
@@ -18,5 +19,5 @@ class PyXFLR:
         self.fin_edit = FinEdit(self.window_interaction)
         self.elevator_edit = ElevatorEdit(self.window_interaction)
         
-        # Go to the 
+        # Go to the
         self.overall_nav.default_start()

@@ -5,59 +5,24 @@ import time
 
 class WindowEdit:
     """ Interface to edit boxes """
+
     def __init__(self, window_interaction : WindowInteraction, parameters : dict):
         self.wi = window_interaction
         self.current_index = 0
         self.parameters = parameters
     
-    def __start(self):
-        """ __Starts the window, must done at the beginning of every new interaction with the window """
-        self.wi.ctrl_press(self.parameters['key'])
-        self.current_index = 0
-        time.sleep(0.1)
-    
-    def __end(self):
-        """ Save and close the window """
-        self.wi.press("{Esc}", self.get_window())
-        print(self.wi.list_windows())
-        self.wi.press("{Enter}", self.get_question())
-    
+    """ 
+    Public methods
+    """
     def get_window(self):
         return self.wi.get_window(self.parameters['name'])
     
+
     def get_question(self):
         return self.wi.get_window(b'Question - xflr5 v6.47')
+
     
-    def __select_field(self, name : str, section : int):
-        """ Select a field based on name and section number. See parameters """
-        index = self.__section_index(name, section)
-        self.current_index += index
-        self.wi.field_selector(index, self.get_window())
-
-    def __section_index(self, name : str, section : int) -> int:
-        """ get the index for a given name and section, taking into accoutn current index """
-        if name not in self.parameters.keys():
-            raise FieldNotFound
-        key_presses = self.parameters[name] + (section - 1 ) * self.parameters['section_gap'] - self.current_index
-        
-        if key_presses < 0:
-            # The 'cursor' has gone past the field. We gonna have to save and reopen..
-            self.__end()
-            self.__start()
-            return self.__section_index(name, section)
-        else:
-            return key_presses 
-
-    def __enter_number(self, value : float):
-        """ Just wraps WI function for pressing a key """
-        self.wi.press(f"{value}", self.get_window())
-
-    def __edit_field(self, section : int, name : str, value : float):
-        """ change the value of a field given: value, name, section """ 
-        self.__select_field(name, section)
-        self.__enter_number(value)
-    
-    def update_window(self, parmeter_entries):
+    def update_window(self, parmeter_entries: dict) -> None:
         """ 
         update a window with specified values while keeping state 
         parameter entries {section: {'name' : 0, 'value' : 0}}
@@ -72,6 +37,57 @@ class WindowEdit:
         self.wi.press("{Esc}") # stop editing the fields
         self.__end()
 
+
+    """
+    Private methods
+    """
+
+    def __start(self):
+        """ __Starts the window, must done at the beginning of every new interaction with the window """
+        self.wi.ctrl_press(self.parameters['key'])
+        # check the new window exits
+
+        self.current_index = 0
+        time.sleep(0.1)
+    
+
+    def __end(self):
+        """ Save and close the window """
+        self.wi.press("{Esc}", self.get_question())
+        self.wi.press("{Enter}", self.get_question())
+    
+
+    def __select_field(self, name : str, section : int):
+        """ Select a field based on name and section number. See parameters """
+        index = self.__section_index(name, section)
+        self.current_index += index
+        self.wi.field_selector(index, self.get_window())
+
+
+    def __section_index(self, name : str, section : int) -> int:
+        """ get the index for a given name and section, taking into account current index """
+        if name not in self.parameters.keys():
+            raise FieldNotFound
+        key_presses = self.parameters[name] + (section - 1 ) * self.parameters['section_gap'] - self.current_index
+        
+        if key_presses < 0:
+            # The 'cursor' has gone past the field. We gonna have to save and reopen..
+            self.__end()
+            self.__start()
+            return self.__section_index(name, section)
+        else:
+            return key_presses 
+
+
+    def __enter_number(self, value : float):
+        """ Just wraps WI function for pressing a key """
+        self.wi.press(f"{value}", self.get_window())
+
+
+    def __edit_field(self, section : int, name : str, value : float):
+        """ change the value of a field given: value, name, section """ 
+        self.__select_field(name, section)
+        self.__enter_number(value)
 
 
 # define Python user-defined exceptions
@@ -121,6 +137,7 @@ class ElevatorEdit(WindowEdit):
             'y_dist'        : 16
         }
         super().__init__(window_interaction, parameters)
+
 
 class FinEdit(WindowEdit):
     def __init__(self, window_interaction):

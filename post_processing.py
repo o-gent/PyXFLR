@@ -1,6 +1,7 @@
 """ Store XFLR results into a dataframe """
 import pandas as pd
 
+
 def xflr_dat_to_dataframe(file_name : str) -> pd.DataFrame:
     lines = dat_clean(file_name)
     frame = pd.DataFrame(lines[1:], columns = lines[0])
