@@ -1,6 +1,6 @@
 ![alt text](/assets/logo.png "PyXFLR")
 
-#Python API for XFLR5 automation
+# Python API for XFLR5 automation
 
 Requires:
 
@@ -12,6 +12,10 @@ Requires:
 ## Explanation:
 
 XFLR is  a great tool for low reynolds number analysis of UAVs but iterating through designs is a long process. PyXFLR automates the design iteration process, allowing easy analysis of infinite design possibilities and capturing the results to find the most optimal solution
+
+## state of the project:
+
+Currently having difficulty reliably controlling XFLR through python. 
 
 ## Features:
 
