@@ -5,7 +5,7 @@
 # - Create a new plane F3
 # - Save new plane, Enter * 2
 
-from window_edit import WindowInteraction
+from .window_edit import WindowInteraction
 import logging 
 
 class OverallNav:

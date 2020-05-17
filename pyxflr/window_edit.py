@@ -1,6 +1,6 @@
 from ahk import AHK
 import logging
-from window_interaction import WindowInteraction
+from .window_interaction import WindowInteraction
 import time 
 
 class WindowEdit:

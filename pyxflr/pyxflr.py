@@ -1,6 +1,6 @@
-from window_interaction import WindowInteraction
-from window_edit import WingEdit, ElevatorEdit, FinEdit
-from main_interaction import OverallNav
+from .window_interaction import WindowInteraction
+from .window_edit import WingEdit, ElevatorEdit, FinEdit
+from .main_interaction import OverallNav
 
 import logging
 logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
